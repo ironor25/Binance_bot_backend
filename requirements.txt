@@ -6,3 +6,4 @@ fastapi
 argparse
 logging
 uvicorn
+gunicorn

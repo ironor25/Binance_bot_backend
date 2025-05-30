@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from trading_bot_cli import BasicBot
 from dotenv import load_dotenv
 import os
+import uvicorn
 load_dotenv()
 
 API_KEY = os.getenv("API_KEY")
@@ -70,3 +71,6 @@ def order_request(order : Order):
         raise HTTPException(status_code=500, detail=f"Order failed: {str(e)}")
 
     return {"success": True, "order": placed_order}
+
+if __name__ == "__main__":
+        uvicorn.run("trading_bot_api:app", host="127.0.0.1", port=8000, reload=True)
